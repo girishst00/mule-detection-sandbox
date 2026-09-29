@@ -1,0 +1,55 @@
+{
+  "test_id": "TEST-06",
+  "typology": "Hybrid Parcel-to-Digital Reshipping Mule",
+  "scenario_description": "Account exhibits high-ticket e-commerce chargebacks/purchases tied to physical reshipping addresses, combined with rapid digital fund splitting.",
+  "transactions": [
+    {
+      "tx_id": "TXN-06-001",
+      "timestamp": "2026-09-29T12:00:00Z",
+      "account_id": "ACC-HYBRID-3091",
+      "account_type": "Retail Savings",
+      "direction": "CREDIT",
+      "amount": 350000.00,
+      "currency": "INR",
+      "counterparty": {
+        "name": "E-Commerce Refund / Merchant Gateway",
+        "identifier": "GATEWAY-MERCH-99",
+        "bank": "Digital Payment Aggregator"
+      },
+      "channel": "PG_REFUND",
+      "notes": "Large volume inflow matching fraudulent merchandise return/refund settlements."
+    },
+    {
+      "tx_id": "TXN-06-002",
+      "timestamp": "2026-09-29T12:15:20Z",
+      "account_id": "ACC-HYBRID-3091",
+      "account_type": "Retail Savings",
+      "direction": "DEBIT",
+      "amount": 150000.00,
+      "currency": "INR",
+      "counterparty": {
+        "name": "Logistics Reshipper Sub-Agent",
+        "identifier": "UPI-RESIP-01@oksbi",
+        "bank": "National Bank"
+      },
+      "channel": "UPI",
+      "notes": "Outward payment designated for physical parcel reshipping forwarding fees."
+    },
+    {
+      "tx_id": "TXN-06-003",
+      "timestamp": "2026-09-29T12:25:10Z",
+      "account_id": "ACC-HYBRID-3091",
+      "account_type": "Retail Savings",
+      "direction": "DEBIT",
+      "amount": 195000.00,
+      "currency": "INR",
+      "counterparty": {
+        "name": "Unknown Beneficiary Vault",
+        "identifier": "ACC-VAULT-88",
+        "bank": "Cooperative Bank"
+      },
+      "channel": "NEFT",
+      "notes": "Final sweep of hybrid liquidity pool."
+    }
+  ]
+}

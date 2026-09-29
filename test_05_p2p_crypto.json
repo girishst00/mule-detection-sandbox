@@ -1,0 +1,55 @@
+{
+  "test_id": "TEST-05",
+  "typology": "P2P / Crypto-Bridge Liquidity Churning",
+  "scenario_description": "Rapid conversion of inbound retail funds into decentralized assets via peer-to-peer merchant networks to obfuscate tracing.",
+  "transactions": [
+    {
+      "tx_id": "TXN-05-001",
+      "timestamp": "2026-09-29T11:00:00Z",
+      "account_id": "ACC-RET-5512",
+      "account_type": "Retail Savings",
+      "direction": "CREDIT",
+      "amount": 200000.00,
+      "currency": "INR",
+      "counterparty": {
+        "name": "Aggregated Small-Ticket Senders",
+        "identifier": "UPI-BATCH-INFLOW",
+        "bank": "Various Banks"
+      },
+      "channel": "UPI",
+      "notes": "Series of incoming fast-payment credits from multiple unknown retail sources."
+    },
+    {
+      "tx_id": "TXN-05-002",
+      "timestamp": "2026-09-29T11:12:30Z",
+      "account_id": "ACC-RET-5512",
+      "account_type": "Retail Savings",
+      "direction": "DEBIT",
+      "amount": 65000.00,
+      "currency": "INR",
+      "counterparty": {
+        "name": "P2P Crypto Trader A",
+        "identifier": "UPI-P2P-TRADER-01@ybl",
+        "bank": "Partner Bank X"
+      },
+      "channel": "IMPS",
+      "notes": "P2P escrow release for virtual asset purchase."
+    },
+    {
+      "tx_id": "TXN-05-003",
+      "timestamp": "2026-09-29T11:18:45Z",
+      "account_id": "ACC-RET-5512",
+      "account_type": "Retail Savings",
+      "direction": "DEBIT",
+      "amount": 134000.00,
+      "currency": "INR",
+      "counterparty": {
+        "name": "P2P Crypto Trader B",
+        "identifier": "UPI-P2P-TRADER-02@paytm",
+        "bank": "Partner Bank Y"
+      },
+      "channel": "IMPS",
+      "notes": "Secondary P2P liquidity churn; complete drainage of remaining balance."
+    }
+  ]
+}

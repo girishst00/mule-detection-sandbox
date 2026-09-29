@@ -1,0 +1,55 @@
+{
+  "test_id": "TEST-04",
+  "typology": "Cuckoo Smurfing & Layered Structured Deposits",
+  "scenario_description": "Unsuspecting retail account receives unexpected domestic third-party credit immediately followed by rapid multi-channel layering, mirroring a cuckoo smurfing structure.",
+  "transactions": [
+    {
+      "tx_id": "TXN-04-001",
+      "timestamp": "2026-09-29T10:15:00Z",
+      "account_id": "ACC-RET-8892",
+      "account_type": "Retail Savings",
+      "direction": "CREDIT",
+      "amount": 145000.00,
+      "currency": "INR",
+      "counterparty": {
+        "name": "Unrelated Third Party (Scam Victim)",
+        "identifier": "UPI-XYZ-998877@paytm",
+        "bank": "External Bank A"
+      },
+      "channel": "UPI",
+      "notes": "Inbound deposit unassociated with account holder's known recurring income sources."
+    },
+    {
+      "tx_id": "TXN-04-002",
+      "timestamp": "2026-09-29T10:22:14Z",
+      "account_id": "ACC-RET-8892",
+      "account_type": "Retail Savings",
+      "direction": "DEBIT",
+      "amount": 50000.00,
+      "currency": "INR",
+      "counterparty": {
+        "name": "Crypto P2P Merchant Alpha",
+        "identifier": "ACC-MERCH-01",
+        "bank": "External Bank B"
+      },
+      "channel": "IMPS",
+      "notes": "Immediate outward layering into virtual asset gateway."
+    },
+    {
+      "tx_id": "TXN-04-003",
+      "timestamp": "2026-09-29T10:30:45Z",
+      "account_id": "ACC-RET-8892",
+      "account_type": "Retail Savings",
+      "direction": "DEBIT",
+      "amount": 94000.00,
+      "currency": "INR",
+      "counterparty": {
+        "name": "Shell Entity Beta",
+        "identifier": "ACC-CORP-4433",
+        "bank": "External Bank C"
+      },
+      "channel": "NEFT",
+      "notes": "Rapid sweep of remaining balance, leaving near-zero holding."
+    }
+  ]
+}
