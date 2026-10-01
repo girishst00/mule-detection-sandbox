@@ -12,18 +12,31 @@ class VelocityEngine:
     def evaluate_velocity(self, account_id: str, transaction_history: List[Dict], current_tx: Dict) -> Dict:
         current_amount = current_tx.get("amount", 0.0)
         current_time = datetime.fromisoformat(current_tx.get("timestamp"))
-        
+
+        # Combine history and current transaction for unified window evaluation
+        all_txs = transaction_history + [current_tx]
+# Combine history and current transaction for unified window evaluation
+        all_txs = transaction_history + [current_tx]
+
         # Filter transactions within a short trailing time window (e.g., last 1 hour)
         recent_window = current_time - timedelta(hours=1)
         recent_txs = [
-            tx for tx in transaction_history 
+            tx for tx in all_txs
             if datetime.fromisoformat(tx.get("timestamp")) >= recent_window
         ]
-        
+
         burst_count = len(recent_txs)
-        total_inflow_recent = sum(tx.get("amount", 0.0) for tx in recent_txs if tx.get("type") == "inbound")
-        total_outflow_recent = sum(tx.get("amount", 0.0) for tx in recent_txs if tx.get("type") == "outbound")
         
+        # Support both 'type' and 'direction' keys (case-insensitive check)
+        total_inflow_recent = sum(
+            tx.get("amount", 0.0) for tx in recent_txs 
+            if str(tx.get("type", tx.get("direction", ""))).lower() in ["in", "inbound"]
+        )
+        total_outflow_recent = sum(
+            tx.get("amount", 0.0) for tx in recent_txs 
+            if str(tx.get("type", tx.get("direction", ""))).lower() in ["out", "outbound"]
+        )
+
         # Pass-through ratio check (funds arriving and leaving almost instantly)
         pass_through_ratio = (
             min(total_inflow_recent, total_outflow_recent) / max(total_inflow_recent, 1.0)

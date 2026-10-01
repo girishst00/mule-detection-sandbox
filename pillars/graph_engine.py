@@ -13,8 +13,8 @@ class GraphIntelligenceEngine:
         """Edges format: [{'source': 'acc_A', 'target': 'acc_B', 'amount': 15000}]"""
         for edge in edges:
             self.graph.add_edge(
-                edge["source"], 
-                edge["target"], 
+                edge["source_node"], 
+                edge["target_node"], 
                 weight=edge.get("amount", 1.0)
             )
 
