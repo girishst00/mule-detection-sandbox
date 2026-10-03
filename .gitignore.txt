@@ -1,0 +1,14 @@
+# Environments & Dependencies
+venv/
+env/
+ENV/
+
+# Python Cache & Pytest
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# OS Specific Files
+.DS_Store
+Thumbs.db

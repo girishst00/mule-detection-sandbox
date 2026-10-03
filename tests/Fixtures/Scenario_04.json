@@ -1,0 +1,84 @@
+{
+  "scenario_id": "SCN-04",
+  "scenario_name": "High-Velocity Rapid Liquidation Pattern",
+  "accounts": [
+    {
+      "account_id": "ACC_SOURCE_01",
+      "account_type": "corporate",
+      "risk_rating": "medium",
+      "institution_id": "INST_PRIMARY_01",
+      "is_dormant": false,
+      "dormancy_duration_days": 0,
+      "kyc_risk_tier": "tier_2"
+    },
+    {
+      "account_id": "ACC_MULE_04",
+      "account_type": "individual",
+      "risk_rating": "high",
+      "institution_id": "INST_PRIMARY_01",
+      "is_dormant": false,
+      "dormancy_duration_days": 0,
+      "kyc_risk_tier": "tier_3"
+    },
+    {
+      "account_id": "ACC_TARGET_01",
+      "account_type": "external",
+      "risk_rating": "unknown",
+      "institution_id": "INST_EXTERNAL_01",
+      "is_dormant": false,
+      "dormancy_duration_days": 0,
+      "kyc_risk_tier": "tier_1"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "node_1",
+      "type": "account",
+      "label": "ACC_SOURCE_01"
+    },
+    {
+      "id": "node_2",
+      "type": "account",
+      "label": "ACC_MULE_04"
+    },
+    {
+      "id": "node_3",
+      "type": "account",
+      "label": "ACC_TARGET_01"
+    }
+  ],
+  "edges": [
+    {
+      "source": "node_1",
+      "target": "node_2",
+      "relationship": "TRANSFER",
+      "amount": 50000.0,
+      "timestamp": "2026-10-03T10:00:00Z"
+    },
+    {
+      "source": "node_2",
+      "target": "node_3",
+      "relationship": "TRANSFER",
+      "amount": 49500.0,
+      "timestamp": "2026-10-03T10:02:15Z"
+    }
+  ],
+  "transactions": [
+    {
+      "transaction_id": "TXN_IN_01",
+      "source_account_id": "ACC_SOURCE_01",
+      "destination_account_id": "ACC_MULE_04",
+      "institution_id": "INST_PRIMARY_01",
+      "amount": 50000.0,
+      "timestamp": "2026-10-03T10:00:00Z"
+    },
+    {
+      "transaction_id": "TXN_OUT_01",
+      "source_account_id": "ACC_MULE_04",
+      "destination_account_id": "ACC_TARGET_01",
+      "institution_id": "INST_PRIMARY_01",
+      "amount": 49500.0,
+      "timestamp": "2026-10-03T10:02:15Z"
+    }
+  ]
+}
